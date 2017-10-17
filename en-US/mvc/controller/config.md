@@ -5,13 +5,13 @@ sort: 1
 
 # Configuration
 
-The Beego configuration file supports the following formats: INI, XML, JSON, YAML. It uses INI format by default. It is flexible and easy to configure.
+The Beego configuration file supports the INI, XML, JSON, and YAML formats. The INI format is used by default. 
 
-## The default configurations parsing
+## Default configurations parsing
 
-Beego will parse `conf/app.conf` file by default.
+Beego will parse the `conf/app.conf` file by default.
 
-You can initialize many Beego default variables in this file:
+Several Beego default variables can be initialized in this file:
 
 	appname = beepkg
 	httpaddr = "127.0.0.1"
@@ -21,16 +21,16 @@ You can initialize many Beego default variables in this file:
 	recoverpanic = false
 	viewspath = "myview"
 
-These configurations will replace Beego's default value.
+These configurations will replace Beego's default values.
 
-You can also configure many values which your application needs, such as database connection details:
+Other application specific values can also be configured in this file, such as database connection details:
 
 	mysqluser = "root"
 	mysqlpass = "rootpass"
 	mysqlurls = "127.0.0.1"
 	mysqldb   = "beego"
 
-Then you can access these configurations like this:
+These configurations can be accessed like this:
 
 	beego.AppConfig.String("mysqluser")
 	beego.AppConfig.String("mysqlpass")
@@ -56,14 +56,14 @@ AppConfig's methods:
 - GetSection(section string) (map[string]string, error)
 - SaveConfigFile(filename string) error
 
-The key supports the section::key pattern when using ini type.
+When using ini format the key supports the section::key pattern.
  
-You can use Default* methods to return default values if can't read from config file.
+You can use Default* methods to return default values if the config file can not be read.
 
 
-### The Configurations for Different Environments
+### Configurations for Different Environments
 
-You can set configurations for different runmode under their own sections. Beego will take the configurations of current runmode by default. For example:
+Configurations for different runmodes can be set under their own sections. Beego will take the configurations of the current runmode by default. For example:
 
   appname = beepkg
   httpaddr = "127.0.0.1"
@@ -80,15 +80,15 @@ You can set configurations for different runmode under their own sections. Beego
   [test]
   httpport = 8888
 
-The configurations above set up httpport for dev, prod and test environment. Beego will take httpport = 8080 for current runmode "dev".
+The configuration above sets up httpport for dev, prod and test environment. Beego will take httpport = 8080 for current runmode "dev".
 
-To get the config under different runmode, you can use "runmode::key". Such as `beego.AppConfig.String("dev::mysqluser")`
+To setup the config under a different runmode use "runmode::key". Such as `beego.AppConfig.String("dev::mysqluser")`
 
-For custom configs, you need to use `beego.GetConfig(typ, key string)` to get the config. (1.4.0+).
+For custom configs use `beego.GetConfig(typ, key string)` to settup the config. (1.4.0+).
 
 
 ### Multiple config files
-INI config file supports `include` to including multiple config files.
+INI config file supports `include` to incorprate multiple config files.
 
 app.conf
 
@@ -116,19 +116,19 @@ app2.conf
 
 ### Beego default config variables
 
-Beego has many configurable variables. Let's have a look at these variables. It will help us to know how to use them in development. (You can configure and overwrite them in `conf/app.conf`. Case insensitive.):
+Beego uses many configurable variables.  These can be configured and overwriten in `conf/app.conf`.
 
 #### Basic config
 
 * AppConfigPath
 
-    Application configuration file path. It is `conf/app.conf` by default.  You can change it to your own file.
+    Sets the application configuration file path. This is set to `conf/app.conf` by default.
   
     `beego.AppConfigPath = "conf/app2.conf"`
 
 * AppConfigProvider
 
-    File format of AppConfig, default is `ini`. Could be `xml`, `yaml`, `json` as well.
+    Sets the file format of AppConfig. The default is `ini`. Other valid formats include `xml`, `yaml`, and `json`.
 
 	`beego.AppConfigProvider = "ini"`
 
@@ -136,31 +136,31 @@ Beego has many configurable variables. Let's have a look at these variables. It 
 
 * AppName
 
-    Application name, Beego by default. It is set to project_name if the application is created by `bee new project_name`
+    Sets the application name.  "Beego" is the default name. If the application is created by `bee new project_name` it is set to project_name
   
   	`beego.BConfig.AppName = "beego"`
   	
 * RunMode
 
-    The application mode, which can be `dev`, `prod` or `test`, `dev` by default. In `dev` mode it will show user friendly error pages as we saw before but user friendly error pages will not be rendered in `prod` mode.
+    Sets the application mode.  Valid modes inlude `dev`, `prod` or `test`. `dev` mode is set by default. User friendly error pages will be displayed in `dev` mode.  `prod` mode will prevent these messages being rendered.
     
     `beego.BConfig.RunMode = "dev"`
  
 * RouterCaseSensitive
 
-    Set whether the router is case-sensitive or not. Default value is true.
+    Sets whether the router is case-sensitive or not. The default value is true.
     
     `beego.BConfig.RouterCaseSensitive = true`
    
 * ServerName
 
-    Beego server will output `beego` as the server name by default.
+    Sets the server name.  The default value is `beego`.
 
 	`beego.BConfig.ServerName = "beego"`
 	
 * RecoverPanic
 
-    Recover from panic or not, true by default. It will recover from exceptions without exiting application.
+    Toggles recovery from panic.  The application will recover from exceptions without esiting when active.  This value is set to true by default. 
     
     `beego.BConfig.RecoverPanic = true`
 
