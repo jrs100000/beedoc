@@ -166,63 +166,63 @@ Beego has many configurable variables. Let's have a look at these variables. It 
 
 * CopyRequestBody
 
-    Flag of copy raw request body in context, false by default except GET, HEAD or file uploading.
+    Flag of option to copy raw request body in context.  Set to false by default except for GET, HEAD or file uploading.
   
   	`beego.BConfig.CopyRequestBody = false`
 
 * EnableGzip
 
-    Enable Gzip or not, false by default. If Gzip is enabled, the output of template will be compressed by Gzip or zlib 	    according to `Accept-Encoding` of browser.
+    Toggles the use of Gzip to compress output. Set to false by default. If Gzip is enabled template outputs will be compressed using Gzip or zlib, depending on the `Accept-Encoding` variable of the browser.
   
     `beego.BConfig.EnableGzip = false`
     
-    Further properties as below:
+    Further properties are described below:
     
-    `gzipCompressLevel = 9` The compression level used for deflate compression(0-9),default is 9 (best speed). 
+    `gzipCompressLevel = 9` This variable sets the compression level used for deflate compression(0-9).  The default value is 9 (best speed). 
     
-    `gzipMinLength = 256` Original content will only be compressed if content length is either unknown or greater than gzipMinLength.(default length is 20B,same as nginx).  
+    `gzipMinLength = 256` Original content will only be compressed if content length is either unknown or greater than gzipMinLength. The default value is 20B.  
     
-    `includedMethods = get;post` List of HTTP methods to compress. If not set, only GET requests are compressed.
+    `includedMethods = get;post` List of HTTP methods to compress. By default only GET requests are compressed.
 
 * MaxMemory
 
-    Memory cache size for file uploading, `1 << 26`(64M) by default.
+    The maxium memory cache size for file uploading.  By default this is set to `1 << 26`(64M).
     
     `beego.BConfig.MaxMemory = 1 << 26`
 
 * EnableErrorsShow
 
-    Whether to show error messages or not. True by default.
+    Toggles the display of error messages. Set to true by default.
 
 	`beego.BConfig.EnableErrorsShow = true`
 
 * EnableErrorsRender
 
-	Whether to render error messages or not. True by default, user friendly error pages will not be rendered even in dev `RunMode` if this value is false.
+	Toggles the rendering of error messages. By default this value is true. User friendly error pages will not be rendered, even in dev `RunMode`, if this value is false.
 
 #### Web config
 
 * AutoRender
 
-    Use auto render or not, true by default. Should set it to false for API application as there is no need to render templates.
+    Toggles the use of auto render.  By default this is set to true. This should be set to false for API application as there is no need to render templates.
   
     `beego.BConfig.WebConfig.AutoRender = true`
     
 * EnableDocs
 
-    Enable Docs or not, default is `false`
+    Toggles the enabling of Docs. By default this is set to `false`.
 
 	`beego.BConfig.WebConfig.EnableDocs = false`
 
 * FlashName
 
-    Flash Cookie name，default is `BEEGO_FLASH`
+    Sets the Flash Cookie name.  The default name is `BEEGO_FLASH`.
     
   	`beego.BConfig.WebConfig.FlashName = "BEEGO_FLASH"`
 
 * FlashSeperator
 
-    Flash data separator，default is `BEEGOFLASH`
+    Sets the Flash data separator. By default this is `BEEGOFLASH`.
   
   	`beego.BConfig.WebConfig.FlashSeperator = "BEEGOFLASH"`
 
